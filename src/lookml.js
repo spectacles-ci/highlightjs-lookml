@@ -5,7 +5,53 @@ Description: Language definition for LookML (Looker's dependency language).
 */
 
 export default function (hljs) {
+    const LITERALS = ["yes", "no"];
+    const KEY_MODE = { scope: "keyword", match: /\w+\s*:/ };
+    const LIQUID_MODE = {
+        scope: "template-tag",
+        variants: [
+            { begin: /\{%/, end: /%\}/ },
+            { begin: /\{{2}/, end: /\}{2}/ },
+        ],
+    };
+    const BLOCK_MODE = {
+        scope: "block",
+        begin: [/\w+\s*:\s*/, /(\+?\w+)?/, /\s*/, /\{/],
+        beginScope: {
+            1: "keyword",
+            2: "title",
+            4: "punctuation",
+        },
+        end: /\}/,
+        endScope: "punctuation",
+        keywords: { literal: LITERALS },
+        contains: [
+            hljs.QUOTE_STRING_MODE,
+            hljs.HASH_COMMENT_MODE,
+            "self",
+            {
+                scope: "sql",
+                begin: /(?<=sql\w*\s*:)/,
+                end: /;;/,
+                endScope: "punctuation",
+                contains: [
+                    hljs.QUOTE_STRING_MODE,
+                    { scope: "variable", begin: /\$\{/, end: /\}/ },
+                    LIQUID_MODE,
+                ],
+            },
+            KEY_MODE,
+        ],
+    };
     return {
         name: "LookML",
+        disableAutodetect: true,
+        contains: [
+            hljs.HASH_COMMENT_MODE,
+            hljs.QUOTE_STRING_MODE,
+            BLOCK_MODE,
+            KEY_MODE,
+            LIQUID_MODE,
+        ],
     };
 }
