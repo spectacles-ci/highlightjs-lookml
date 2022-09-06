@@ -16,10 +16,11 @@ export default function (hljs) {
     };
     const BLOCK_MODE = {
         scope: "block",
-        begin: [/\w+\s*:\s*/, /(\+?\w+)?/, /\s*/, /\{/],
+        begin: [/\w+\s*:\s*/, /\+?/, /(\w+)?/, /\s*/, /\{/],
         beginScope: {
             1: "keyword",
-            2: "title",
+            2: "operator",
+            3: "title",
             4: "punctuation",
         },
         end: /\}/,
