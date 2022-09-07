@@ -6,7 +6,7 @@ Description: Language definition for LookML (Looker's dependency language).
 
 export default function (hljs) {
     const LITERALS = ["yes", "no"];
-    const KEY_MODE = { scope: "keyword", match: /\w+\s*:/ };
+    const KEY_MODE = { scope: "keyword", match: /\w+\s*:/, relevance: 0 };
     const LIQUID_MODE = {
         scope: "template-tag",
         variants: [
@@ -37,7 +37,12 @@ export default function (hljs) {
                 endScope: "punctuation",
                 contains: [
                     hljs.QUOTE_STRING_MODE,
-                    { scope: "variable", begin: /\$\{/, end: /\}/ },
+                    {
+                        scope: "variable",
+                        begin: /\$\{/,
+                        end: /\}/,
+                        relevance: 10,
+                    },
                     LIQUID_MODE,
                 ],
             },
@@ -46,7 +51,6 @@ export default function (hljs) {
     };
     return {
         name: "LookML",
-        disableAutodetect: true,
         contains: [
             hljs.HASH_COMMENT_MODE,
             hljs.QUOTE_STRING_MODE,
