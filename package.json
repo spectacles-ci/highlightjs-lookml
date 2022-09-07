@@ -19,12 +19,12 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joshtemple/highlightjs-lookml.git"
+    "url": "git+https://github.com/spectacles-ci/highlightjs-lookml.git"
   },
   "bugs": {
-    "url": "https://github.com/joshtemple/highlightjs-lookml/issues"
+    "url": "https://github.com/spectacles-ci/highlightjs-lookml/issues"
   },
-  "homepage": "https://github.com/joshtemple/highlightjs-lookml#readme",
+  "homepage": "https://github.com/spectacles-ci/highlightjs-lookml#readme",
   "devDependencies": {
     "highlight.js": "^10.7.2",
     "mocha": "^10.0.0",
