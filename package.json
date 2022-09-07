@@ -24,5 +24,10 @@
   "bugs": {
     "url": "https://github.com/joshtemple/highlightjs-lookml/issues"
   },
-  "homepage": "https://github.com/joshtemple/highlightjs-lookml#readme"
+  "homepage": "https://github.com/joshtemple/highlightjs-lookml#readme",
+  "devDependencies": {
+    "highlight.js": "^10.7.2",
+    "mocha": "^10.0.0",
+    "should": "^13.2.3"
+  }
 }
