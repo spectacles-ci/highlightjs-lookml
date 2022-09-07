@@ -1,0 +1,26 @@
+include: "/views/*.view.lkml"
+
+datagroup: ecommerce_etl {
+  sql_trigger: SELECT MAX(created_at) FROM {{ _user_attributes['events'] }} ;;
+  max_cache_age: "24 hours"
+}
+
+explore: +order_items {
+  join: orders {
+    type: left_outer
+    view_label: "Orders"
+    relationship: many_to_one
+    sql_on: ${order_facts.order_id} = ${order_items.order_id} ;;
+  }
+}
+
+view: orders {
+  sql_table_name: analytics.fct_order ;;
+    
+  dimension: order_id {
+    label: "Order ID"
+    type: number
+    hidden: yes
+    sql: ${TABLE}.order_id ;;
+  }
+}
