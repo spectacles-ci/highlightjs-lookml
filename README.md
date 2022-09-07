@@ -2,6 +2,8 @@
 
 LookML is a language used by [Looker](https://www.looker.com/) to model data, describing dimensions, aggregates, calculations, and data relationships in a SQL database. This repository contains a language definition for syntax highlighting with highlight.js.
 
+If you would like to contribute to this language definition, please read our [contributing guidelines](CONTRIBUTING.md).
+
 ## Usage
 
 Simply include the Highlight.js library in your webpage or Node app, then load this module.
