@@ -21,7 +21,7 @@ export default function (hljs) {
             1: "keyword",
             2: "operator",
             3: "title",
-            4: "punctuation",
+            5: "punctuation",
         },
         end: /\}/,
         endScope: "punctuation",
