@@ -1,6 +1,6 @@
 {
   "name": "highlightjs-lookml",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "LookML language definition for highlight.js",
   "main": "src/lookml.js",
   "directories": {
