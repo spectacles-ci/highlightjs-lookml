@@ -31,7 +31,7 @@ export default function (hljs) {
             hljs.HASH_COMMENT_MODE,
             "self",
             {
-                begin: [/sql\w*\s*:/, /.*/, /;;/],
+                begin: [/sql\w*\s*:/, /.*?/, /;;/],
                 beginScope: { 1: "keyword", 2: "sql", 3: "punctuation" },
                 contains: [
                     hljs.QUOTE_STRING_MODE,
