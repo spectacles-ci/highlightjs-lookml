@@ -16,7 +16,7 @@ export default function (hljs) {
     };
     const BLOCK_MODE = {
         scope: "block",
-        begin: [/\w+\s*:\s*/, /\+?/, /(\w+\s*)?/, /\{(?![%\{])`/],
+        begin: [/\w+\s*:\s*/, /\+?/, /(\w+\s*)?/, /\{(?![%\{])/],
         beginScope: {
             1: "keyword",
             2: "operator",
@@ -31,8 +31,11 @@ export default function (hljs) {
             hljs.HASH_COMMENT_MODE,
             "self",
             {
-                begin: [/sql\w*\s*:/, /.*?/, /;;/],
-                beginScope: { 1: "keyword", 2: "sql", 3: "punctuation" },
+                // SQL expression block
+                begin: /sql\w*\s*:/,
+                beginScope: "keyword",
+                end: /;;/,
+                endScope: "punctuation",
                 contains: [
                     hljs.QUOTE_STRING_MODE,
                     {
